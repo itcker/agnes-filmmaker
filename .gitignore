@@ -1,0 +1,28 @@
+# 敏感配置（含 API Key）
+.env
+.env.local
+config.yaml
+
+# Python 缓存与构建
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# 运行产出与本地状态
+output/
+projects/
+projects.json
+projects.lock
+.versions/
+*.bak
+*.part*
+
+# 编辑器与系统文件
+.claude/
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store

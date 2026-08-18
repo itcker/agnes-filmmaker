@@ -1,0 +1,21 @@
+{
+  "key": "default",
+  "name": "默认通用",
+  "description": "通用全品类风格模板，提供基础配色和风格方向。Agent 使用各自内置的行业通用知识进行创作。",
+  "default_config": {
+    "work_type": "AI短片",
+    "episode_plan": "单集1分钟×1集",
+    "core_emotions": [],
+    "core_tags": [],
+    "palette": {
+      "主色": "#4A90D9",
+      "辅色1": "#F5A623",
+      "辅色2": "#7ED321"
+    },
+    "style_keywords": {
+      "表现形式": "高品质3D动画",
+      "色彩范围": "电影级自然饱和",
+      "拍摄类型": "电影化运镜"
+    }
+  }
+}

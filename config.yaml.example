@@ -1,0 +1,96 @@
+# agnes-filmmaker — 配置文件
+# 复制此文件为 config.yaml 并填入你的 API Key
+# 全程使用 Agnes AI（文本 agnes-2.5-flash / 图片 agnes-image-2.1-flash / 视频 agnes-video-v2.0）
+
+project:
+  name: 默认项目
+  type: AI短片
+  episode_plan: 单集1分钟×1集
+
+llm_providers:
+  agnes:
+    api_key: ""                       # 留空则读取环境变量 AGNES_KEY
+    base_url: https://apihub.agnes-ai.com/v1
+
+agents:
+  director:
+    model: agnes-2.5-flash
+    temperature: 0.5
+    max_tokens: 16384
+    provider: agnes
+  screenwriter:
+    model: agnes-2.5-flash
+    temperature: 0.7
+    max_tokens: 16384
+    provider: agnes
+  art_director:
+    model: agnes-2.5-flash
+    temperature: 0.6
+    max_tokens: 16384
+    provider: agnes
+  cinematographer:
+    model: agnes-2.5-flash
+    temperature: 0.3
+    max_tokens: 16384
+    provider: agnes
+  storyboarder:
+    model: agnes-2.5-flash
+    temperature: 0.5
+    max_tokens: 16384
+    provider: agnes
+  asset_builder:
+    model: agnes-2.5-flash
+    temperature: 0.4
+    max_tokens: 16384
+    provider: agnes
+  video_renderer:
+    model: agnes-2.5-flash
+    temperature: 0.3
+    max_tokens: 16384
+    provider: agnes
+  sound_designer:
+    model: agnes-2.5-flash
+    temperature: 0.3
+    max_tokens: 16384
+    provider: agnes
+  post_editor:
+    model: agnes-2.5-flash
+    temperature: 0.5
+    max_tokens: 16384
+    provider: agnes
+  qa_reviewer:
+    model: agnes-2.5-flash
+    temperature: 0.3
+    max_tokens: 16384
+    provider: agnes
+  dialogue_expert:
+    model: agnes-2.5-flash
+    temperature: 0.4
+    max_tokens: 16384
+    provider: agnes
+
+# 媒体生成（真实出图/出视频/拼接）— 接入 Agnes 图片与视频 API
+media:
+  enabled: true                 # false 则只跑文本链路（不消耗图片/视频额度）
+  image:
+    model: agnes-image-2.1-flash
+    size: 1024x1024             # 角色/场景参考图尺寸
+  video:
+    model: agnes-video-v2.0
+    width: 1152
+    height: 768
+    num_frames: 121             # 8n+1，如 81/121/241/441；121帧@24fps≈5秒
+    frame_rate: 24
+    concurrency: 1              # Agnes 视频限流 1次/分钟，必须为 1；否则会触发 429
+    poll_interval: 10           # 轮询间隔（秒）
+    max_polls: 120              # 单镜头最大轮询次数
+  ffmpeg_path: ""               # ffmpeg 可执行文件路径；留空则从 PATH 查找
+
+workflow:
+  gate_review:
+    enabled: true
+    auto_advance: false
+    max_revisions: 3
+  context:
+    compression_threshold: 20000
+    brief_max_tokens: 500

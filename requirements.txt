@@ -1,0 +1,7 @@
+# agnes-filmmaker — 依赖（仅连接 Agnes AI）
+pyyaml>=6.0
+openai>=1.0.0          # Agnes 文本 API（OpenAI 兼容协议）
+requests>=2.31         # Agnes 图片/视频 API 调用与文件下载
+imageio-ffmpeg>=0.5    # 内置 ffmpeg 二进制（视频拼接兜底；亦可改用系统 ffmpeg）
+fastapi>=0.109         # Web 层 API
+uvicorn>=0.27          # Web 服务
